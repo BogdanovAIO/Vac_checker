@@ -17,7 +17,7 @@ class ApiError(Exception):
 
 def check_ban_status_mafile_api(ids):
     """Проверка на VAC по id из maFile."""
-    ids_array = numpy.array_split(ids, len(ids) // 10)
+    ids_array = numpy.array_split(ids, len(ids) // 100)
     game_bans = 0
     vac_bans = 0
     community_bans = 0
@@ -61,6 +61,7 @@ def check_ban_status_mafile_api(ids):
 
 
 def open_mafile():
+    """Открывает мафайл и копается там епта."""
     try:
         for filename in os.listdir("maFiles"):
             with open(os.path.join("maFiles", filename), 'r') as file:
